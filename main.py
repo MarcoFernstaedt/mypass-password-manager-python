@@ -1,18 +1,22 @@
 from tkinter import *
 from tkinter import messagebox
+from password_generator import generateing_password
 
 def save():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
 
-    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\n Email: {email}\n Password: {password}\n Is it ok to save?")
+    if len(email) == 0 or len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title="Oops", message="Please check to make sure all entries are filled")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\n Email: {email}\n Password: {password}\n Is it ok to save?")
 
-    if is_ok == True:
-        with open("data.txt", "a") as data_file:
-            data_file.write(f"{website} | {email} | {password}\n")
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+        if is_ok == True:
+            with open("data.txt", "a") as data_file:
+                data_file.write(f"{website} | {email} | {password}\n")
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 
 window = Tk()
@@ -44,7 +48,7 @@ password_label.grid(column=0, row=3)
 password_entry = Entry(width=21)
 password_entry.grid(column=1, row=3)
 
-generate_password_button = Button(text="Generate Password")
+generate_password_button = Button(text="Generate Password", command=generateing_password)
 generate_password_button.grid(column=2, row=3, columnspan=2)
 
 add_button = Button(text="Add", width=36, command=save)
