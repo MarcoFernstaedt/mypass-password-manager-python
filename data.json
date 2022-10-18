@@ -1,6 +1,10 @@
 {
-    "amazon": {
+    "ebay": {
         "email": "example@email.com",
-        "password": "b(9y9peJk*1Lqw"
+        "password": "Mh7+j!6vRfm&P"
+    },
+    "google": {
+        "email": "example@email.com",
+        "password": "rM0n5In8$T%$iAMn5"
     }
 }
